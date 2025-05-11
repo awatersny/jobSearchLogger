@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Job() {
+export default function Job({ title }) {
   return (
-    <div>Job</div>
+    <div>{title}</div>
   )
 }
