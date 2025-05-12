@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getAllCompanies } from '../services/jobSearchLoggerAPI'
 import Company from './Company'
 
@@ -7,7 +7,7 @@ export default function Companies() {
 
   useEffect(() => {
     getAllCompanies().then(res => setCompanies(res.data))
-  })
+  }, [])
 
   return (
     <>

@@ -11,8 +11,6 @@ export default function Jobs() {
     getAllJobs().then(res => setJobs(res.data))
   }, [])
 
-  console.log(jobs)
-
   return (
     <>
       <div>Jobs</div>

@@ -13,11 +13,13 @@ export async function getJob(id) {
   const response = await axios.get(URL)
   return response
 }
+
 export async function getAllCompanies() {
   const URL = `${baseURL}/companies`
   const response = await axios.get(URL)
   return response
 }
+
 export async function getCompany(id) {
   const URL = `${baseURL}/companies/${id}`
   const response = await axios.get(URL)
