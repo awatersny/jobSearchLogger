@@ -11,7 +11,6 @@ export default function Register() {
       email: evt.target.email.value,
       password: evt.target.password.value,
     }
-    console.log(JSON.stringify(user))
     registerUser(user).then(() => {
       nav('/')
     })
