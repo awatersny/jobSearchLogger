@@ -8,6 +8,8 @@ export default function NavBar() {
       <li><Link className='link' to="/jobs">Jobs List</Link></li>
       <li><Link className='link' to="/companies">Companies List</Link></li>
       <li><Link className='link' to="/jobs/new">Add Job</Link></li>
+      <li><Link className='link' to="/login">Login</Link></li>
+      <li><Link className='link' to="/register">Register</Link></li>
     </ul>
   )
 }
