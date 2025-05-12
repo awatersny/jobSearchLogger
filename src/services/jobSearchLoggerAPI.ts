@@ -25,3 +25,9 @@ export async function getCompany(id) {
   const response = await axios.get(URL)
   return response
 }
+
+export async function registerUser(user) {
+  const URL = `${baseURL}/auth/register`
+  const response = await axios.post(URL, user)
+  return response
+}
