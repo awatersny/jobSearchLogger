@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { loginUser } from "../services/jobSearchLoggerAPI"
+import { useState } from "react"
 
 export default function Login() {
   const nav = useNavigate()
+    let [message, setMessage] = useState("")
 
   const loginExistingUser = evt => {
     evt.preventDefault()
@@ -11,8 +13,12 @@ export default function Login() {
       email: evt.target.email.value,
       password: evt.target.password.value,
     }
-    loginUser(user).then(() => {
-      nav('/')
+    loginUser(user).then(res => {
+      if(res.data.msg) {
+        setMessage(res.data.msg)
+      } else {
+        nav('/')
+      }
     })
   }
 
@@ -20,6 +26,7 @@ export default function Login() {
     <div>
       <h1>Login</h1>
       <form onSubmit={loginExistingUser}>
+        <h5 className="error-msg">{message}</h5>
         <label htmlFor="email">Email: </label>
         <input type="email" id="email" name="email" required/>
         <label htmlFor="password">Password: </label>
