@@ -7,7 +7,6 @@ export default function Register() {
   const registerNewUser = evt => {
     evt.preventDefault()
     const user = {
-      name: evt.target.name.value,
       email: evt.target.email.value,
       password: evt.target.password.value,
     }
@@ -20,8 +19,6 @@ export default function Register() {
     <div>
       <h1>Register</h1>
       <form onSubmit={registerNewUser}>
-        <label htmlFor="name">Name: </label>
-        <input type="text" id="name" name="name" required/>
         <label htmlFor="email">Email: </label>
         <input type="email" id="email" name="email" required/>
         <label htmlFor="password">Password: </label>
