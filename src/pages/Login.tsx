@@ -27,11 +27,17 @@ export default function Login() {
       <h1>Login</h1>
       <form onSubmit={loginExistingUser}>
         <h5 className="error-msg">{message}</h5>
-        <label htmlFor="email">Email: </label>
-        <input type="email" id="email" name="email" required/>
-        <label htmlFor="password">Password: </label>
-        <input type="password" name="password" id="password" required/>
-        <button type="submit">Login</button>
+        <div className="form-field">
+          <label htmlFor="email">Email: </label>
+          <input type="email" id="email" name="email" required/>
+        </div>
+        <div className="form-field">
+          <label htmlFor="password">Password: </label>
+          <input type="password" name="password" id="password" required/>
+        </div>
+        <div className="form-field">
+          <button type="submit">Login</button>
+        </div>
       <Link to = "/register">Register</Link>
       </form>
     </div>

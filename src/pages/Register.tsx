@@ -26,11 +26,17 @@ export default function Register() {
       <h1>Register</h1>
       <form onSubmit={registerNewUser}>
         <h5 className="error-msg">{message}</h5>
-        <label htmlFor="email">Email: </label>
-        <input type="email" id="email" name="email" required/>
-        <label htmlFor="password">Password: </label>
-        <input type="password" name="password" id="password" required/>
-        <button type="submit">Register</button>
+        <div className="form-field">
+          <label htmlFor="email">Email: </label>
+          <input type="email" id="email" name="email" required/>
+        </div>
+        <div className="form-field">
+          <label htmlFor="password">Password: </label>
+          <input type="password" name="password" id="password" required/>
+        </div>
+        <div className="form-field">
+          <button type="submit">Register</button>
+        </div>
       </form>
     </div>
   )

@@ -15,7 +15,7 @@ export default function CreateJob() {
 
   return (
     <>
-      <div>CreateJob</div>
+      <h2>New Application</h2>
       <form>
         <h5 className="error-msg">{message}</h5>
         <div className='form-field'>
