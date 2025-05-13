@@ -26,6 +26,12 @@ export async function getCompany(id) {
   return response
 }
 
+export async function loginUser(user) {
+  const URL = `${baseURL}/auth/login`
+  const response = await axios.post(URL, user)
+  return response
+}
+
 export async function registerUser(user) {
   const URL = `${baseURL}/auth/register`
   const response = await axios.post(URL, user)
