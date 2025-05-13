@@ -8,6 +8,10 @@ export default function Register() {
 
   const registerNewUser = evt => {
     evt.preventDefault()
+    if(evt.target.password.value !== evt.target.confirm.value) {
+      setMessage("Passwords must match!")
+      return
+    }
     const user = {
       email: evt.target.email.value,
       password: evt.target.password.value,
@@ -23,7 +27,7 @@ export default function Register() {
 
   return (
     <div>
-      <h1>Register</h1>
+      <h2>Register</h2>
       <form onSubmit={registerNewUser}>
         <h5 className="error-msg">{message}</h5>
         <div className="form-field">
@@ -33,6 +37,10 @@ export default function Register() {
         <div className="form-field">
           <label htmlFor="password">Password: </label>
           <input type="password" name="password" id="password" required/>
+        </div>
+        <div className="form-field">
+          <label htmlFor="confirm">Confirm Password: </label>
+          <input type="password" name="confirm" id="confirm" required/>
         </div>
         <div className="form-field">
           <button type="submit">Register</button>

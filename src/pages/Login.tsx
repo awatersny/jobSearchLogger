@@ -24,7 +24,7 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h2>Login</h2>
       <form onSubmit={loginExistingUser}>
         <h5 className="error-msg">{message}</h5>
         <div className="form-field">

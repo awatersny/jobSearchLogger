@@ -11,7 +11,7 @@ export default function Companies() {
 
   return (
     <>
-      <div>Companies</div>
+      <h2>Companies</h2>
       {companies.map(company => <div>
         <Company
           name = {company.name}
