@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const baseURL = "https://jobsearchloggerapi.onrender.com"
+// const baseURL = "https://jobsearchloggerapi.onrender.com"
+const baseURL = "http://localhost:5050"
+
 
 export async function getAllJobs() {
   const URL = `${baseURL}/jobs`
