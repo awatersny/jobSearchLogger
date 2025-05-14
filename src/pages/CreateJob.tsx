@@ -33,7 +33,7 @@ export default function CreateJob() {
     evt.preventDefault()
     setIsNewCompany(!isNewCompany)
   }
-
+  //TODO Add more conditional rendering for the rest of the company fields
   return (
     <>
       <h2>New Application</h2>
@@ -44,7 +44,7 @@ export default function CreateJob() {
           <label htmlFor="title">Title: </label>
           <input type="text" id="title" name="title" required/>
         </div>
-
+  
         <div className="form-field">
           <label htmlFor="company">Company: </label>
           {isNewCompany ? 
