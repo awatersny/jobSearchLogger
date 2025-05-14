@@ -37,57 +37,59 @@ export default function CreateJob() {
   return (
     <>
       <h2>New Application</h2>
-      <form onSubmit={addApplication}>
-        <h5 className="error-msg">{message}</h5>
+      <main>
+        <form onSubmit={addApplication}>
+          <h5 className="error-msg">{message}</h5>
 
-        <div className='form-field'>
-          <label htmlFor="title">Title: </label>
-          <input type="text" id="title" name="title" required/>
-        </div>
-  
-        <div className="form-field">
-          <label htmlFor="company">Company: </label>
-          {isNewCompany ? 
-            <input type="text" name="company" id="company" /> :
-            <select name="" id="">
-              {companies.map(company => 
-                <option key={company._id} value={company}>
-                  {company.name}
-                </option>
-              )}
+          <div className='form-field'>
+            <label htmlFor="title">Title: </label>
+            <input type="text" id="title" name="title" required/>
+          </div>
+    
+          <div className="form-field">
+            <label htmlFor="company">Company: </label>
+            {isNewCompany ? 
+              <input type="text" name="company" id="company" /> :
+              <select name="" id="">
+                {companies.map(company => 
+                  <option key={company._id} value={company}>
+                    {company.name}
+                  </option>
+                )}
+              </select>
+            }
+            <button onClick={changeCompanyInput}>
+              {isNewCompany ? "Use Existing Company" : "Add New Company"}
+            </button>
+          </div>
+
+          <div className='form-field'>
+            <label htmlFor="description">Description: </label>
+            <textarea name="description" id="description" rows={4} cols={50} required/>
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="add-skill">Skill:</label>
+            <input type="text" name="add-skill" id="add-skill" />
+            <button onClick={addSkill}>Add Skill</button>
+          </div>
+
+
+          <div id="skills">
+            {skills.map(skill => <div>{skill}</div>)}
+          </div>
+
+          <div className='form-field'>
+            <label htmlFor="status">Status:</label>
+            <select name="status" id="status">
+              {statuses.map(status => <option value={status}>{status}</option>)}
             </select>
-          }
-          <button onClick={changeCompanyInput}>
-            {isNewCompany ? "Use Existing Company" : "Add New Company"}
-          </button>
-        </div>
-
-        <div className='form-field'>
-          <label htmlFor="description">Description: </label>
-          <textarea name="description" id="description" rows={4} cols={50} required/>
-        </div>
-
-        <div className="form-field">
-          <label htmlFor="add-skill">Skill:</label>
-          <input type="text" name="add-skill" id="add-skill" />
-          <button onClick={addSkill}>Add Skill</button>
-        </div>
-
-
-        <div id="skills">
-          {skills.map(skill => <div>{skill}</div>)}
-        </div>
-
-        <div className='form-field'>
-          <label htmlFor="status">Status:</label>
-          <select name="status" id="status">
-            {statuses.map(status => <option value={status}>{status}</option>)}
-          </select>
-        </div>
-        <div className="form-field">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+          </div>
+          <div className="form-field">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </main>
     </>
   )
 }

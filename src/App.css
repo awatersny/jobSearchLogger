@@ -19,7 +19,9 @@
 
 .form-field {
   display: flex;
+  justify-content: space-between;
   margin: 10px;
+  width: 100%;
 }
 
 label {
@@ -38,9 +40,17 @@ ul {
   list-style: none;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+}
+
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 40%;
+  padding: 10px;
+  border: 10px outset black;
 }

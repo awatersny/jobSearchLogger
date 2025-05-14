@@ -28,24 +28,26 @@ export default function Register() {
   return (
     <div>
       <h2>Register</h2>
-      <form onSubmit={registerNewUser}>
-        <h5 className="error-msg">{message}</h5>
-        <div className="form-field">
-          <label htmlFor="email">Email: </label>
-          <input type="email" id="email" name="email" required/>
-        </div>
-        <div className="form-field">
-          <label htmlFor="password">Password: </label>
-          <input type="password" name="password" id="password" required/>
-        </div>
-        <div className="form-field">
-          <label htmlFor="confirm">Confirm Password: </label>
-          <input type="password" name="confirm" id="confirm" required/>
-        </div>
-        <div className="form-field">
-          <button type="submit">Register</button>
-        </div>
-      </form>
+      <main>
+        <form onSubmit={registerNewUser}>
+          <h5 className="error-msg">{message}</h5>
+          <div className="form-field">
+            <label htmlFor="email">Email: </label>
+            <input type="email" id="email" name="email" required/>
+          </div>
+          <div className="form-field">
+            <label htmlFor="password">Password: </label>
+            <input type="password" name="password" id="password" required/>
+          </div>
+          <div className="form-field">
+            <label htmlFor="confirm">Confirm Password: </label>
+            <input type="password" name="confirm" id="confirm" required/>
+          </div>
+          <div className="form-field">
+            <button type="submit">Register</button>
+          </div>
+        </form>
+      </main>
     </div>
   )
 }
