@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { getAllCompanies } from '../services/jobSearchLoggerAPI'
+import Company from './Company'
 
 export default function CreateJob() {
   const [companies, setCompanies] = useState([])
+  const [company, setCompany] = useState({})
   const [skills, setSkills] = useState([])
   const [values, setValues] = useState([])
   const [message, setMessage] = useState("")
@@ -34,14 +36,20 @@ export default function CreateJob() {
     }
   }
 
-  const addApplication = evt => {
+  const showSelectedCompany = evt => {
     evt.preventDefault()
-    console.log("Add Application")
+    const companyData = JSON.parse(evt.target.value)
+    setCompany(companyData)
   }
-
+  
   const changeCompanyInput = evt => {
     evt.preventDefault()
     setIsNewCompany(!isNewCompany)
+  }
+
+  const addApplication = evt => {
+    evt.preventDefault()
+    console.log("Add Application")
   }
   //TODO Add more conditional rendering for the rest of the company fields
   return (
@@ -60,33 +68,44 @@ export default function CreateJob() {
             <label htmlFor="company">Company: </label>
             {isNewCompany ? 
               <input type="text" name="company" id="company" /> :
-              <select name="" id="">
+              <select onChange={showSelectedCompany} name="" id="">
                 {companies.map(company => 
-                  <option key={company._id} value={company}>
+                  <option key={company._id} value={JSON.stringify(company)}>
                     {company.name}
                   </option>
                 )}
               </select>
             }
           </div>
-          <div className="form-field">
-            <label htmlFor="comp-descr">Company Description:</label>
-            <textarea name="comp-descr" id="comp-descr" rows={4}></textarea>
-          </div>
-          <div className="form-field">
-            <label htmlFor="add-value">Company Values:</label>
-            <input type="text" name="add-value" id="add-value" />
-            <button onClick={addAttr}>Add Value</button>
-          </div>
+          {isNewCompany ? 
+            <>
+              <div className="form-field">
+                <label htmlFor="comp-descr">Company Description:</label>
+                <textarea name="comp-descr" id="comp-descr" rows={4}></textarea>
+              </div>
+              <div className="form-field">
+                <label htmlFor="add-value">Company Values:</label>
+                <input type="text" name="add-value" id="add-value" />
+                <button onClick={addAttr}>Add Value</button>
+              </div>
+              <div className="attr-container">
+                {values.map(value => <div className='attr'>{value}</div>)}
+              </div>
+              <div className="form-field">
+                <label htmlFor="website">Website:</label>
+                <input type="text" name="website" id="website" />
+              </div>
+            </>
+          : 
+            <Company
+              name = {company.name}
+              description = {company.description}
+              values = {company.values}
+              website = {company.website}
+            />
+          }
 
-          <div className="attr-container">
-            {values.map(value => <div>{value}</div>)}
-          </div>
 
-          <div className="form-field">
-            <label htmlFor="website">Website:</label>
-            <input type="text" name="website" id="website" />
-          </div>
           <button onClick={changeCompanyInput}>
             {isNewCompany ? "Use Existing Company" : "Add New Company"}
           </button>
@@ -103,7 +122,7 @@ export default function CreateJob() {
           </div>
 
           <div className="attr-container">
-            {skills.map(skill => <div>{skill}</div>)}
+            {skills.map(skill => <div className='attr'>{skill}</div>)}
           </div>
 
           <div className='form-field'>

@@ -24,6 +24,17 @@
   width: 100%;
 }
 
+.attr-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.attr {
+  margin: 10px;
+  padding: 5px;
+  border: 5px outset black;
+}
+
 textarea {
   width: 67%;
 }

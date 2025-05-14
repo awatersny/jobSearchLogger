@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Company({ name, description, values, website }) {
   return (
-    <>
+    <div className='info'>
       <div><b>Company: </b>{name}</div>
       <div><b>Description: </b>{description}</div>
       <div><u><b>Values</b></u></div>
@@ -10,6 +10,6 @@ export default function Company({ name, description, values, website }) {
         {value}
       </div>) : <div>None Recorded</div>}
       <div><b>Website: </b>{website}</div>
-    </>
+    </div>
   )
 }
