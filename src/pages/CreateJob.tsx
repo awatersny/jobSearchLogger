@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getAllCompanies } from '../services/jobSearchLoggerAPI'
+import { getAllCompanies, addNewCompany, addNewJob } from '../services/jobSearchLoggerAPI'
 import Company from './Company'
 
 export default function CreateJob() {
@@ -56,11 +56,24 @@ export default function CreateJob() {
 
   const addApplication = evt => {
     evt.preventDefault()
-    if(isNewCompany) {
-      console.log("Add Application For New Company")
-    } else {
-      console.log("Add Application For Previous Company")
+    const jobData = {
+      title: evt.target.title.value,
+      description: evt.target.description.value,
+      skills: skills,
+      website: evt.target.website.value
     }
+    if(isNewCompany) {
+      const companyData = {
+        name: evt.target.company.value,
+        description: evt.target.compDescr.value,
+        values: values,
+        website: evt.target.website.value
+      }
+      console.log(companyData)
+    } else {
+      console.log(company)
+    }
+    console.log(jobData)
   }
   //TODO Add more conditional rendering for the rest of the company fields
   return (
@@ -99,8 +112,8 @@ export default function CreateJob() {
           {isNewCompany ? 
             <>
               <div className="form-field">
-                <label htmlFor="comp-descr">Company Description:</label>
-                <textarea name="comp-descr" id="comp-descr" rows={4}></textarea>
+                <label htmlFor="compDescr">Company Description:</label>
+                <textarea name="compDescr" id="comp-descr" rows={4}></textarea>
               </div>
               <div className="form-field">
                 <label htmlFor="add-value">Company Values:</label>
