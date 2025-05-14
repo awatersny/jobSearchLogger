@@ -58,10 +58,10 @@ export default function CreateJob() {
                 )}
               </select>
             }
-            <button onClick={changeCompanyInput}>
-              {isNewCompany ? "Use Existing Company" : "Add New Company"}
-            </button>
           </div>
+          <button onClick={changeCompanyInput}>
+            {isNewCompany ? "Use Existing Company" : "Add New Company"}
+          </button>
 
           <div className='form-field'>
             <label htmlFor="description">Description: </label>
