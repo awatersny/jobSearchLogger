@@ -13,7 +13,7 @@ export default function Jobs() {
 
   return (
     <>
-      <h2>Jobs</h2>
+      <h2>Previous Applications</h2>
       <main>
         <ul>
           {jobs.map((job) => <li>

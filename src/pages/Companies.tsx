@@ -11,7 +11,7 @@ export default function Companies() {
 
   return (
     <>
-      <h2>Companies</h2>
+      <h2>Companies You've Applied To</h2>
       {companies.map(company => <div>
         <Company
           name = {company.name}
