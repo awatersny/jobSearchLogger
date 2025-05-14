@@ -51,3 +51,27 @@ export async function addNewJob(job) {
   const response = await axios.post(URL, job)
   return response
 }
+
+export async function editJob(id) {
+  const URL = `${baseURL}/jobs/${id}`
+  const response = await axios.put(URL)
+  return response
+}
+
+export async function deleteJob(id) {
+  const URL = `${baseURL}/jobs/${id}`
+  const response = await axios.delete(URL)
+  return response
+}
+
+export async function editCompany(id) {
+  const URL = `${baseURL}/companies/${id}`
+  const response = await axios.put(URL)
+  return response
+}
+
+export async function deleteCompany(id) {
+  const URL = `${baseURL}/companies/${id}`
+  const response = await axios.delete(URL)
+  return response
+}
