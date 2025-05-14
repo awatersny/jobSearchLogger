@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { getAllCompanies } from '../services/jobSearchLoggerAPI'
 
 export default function CreateJob() {
@@ -11,12 +11,27 @@ export default function CreateJob() {
     getAllCompanies().then(res => setCompanies(res.data))
   }, [])
 
-  console.log(companies)
+  const addSkill = evt => {
+    evt.preventDefault()
+    const field = evt.target.parentElement.childNodes[1]
+    const skill = field.value
+    field.value = ""
+    if(skills.indexOf(skill) < 0) {
+      setSkills([...skills, skill])
+    } else {
+      setMessage("Skill already added!")
+    }
+  }
+
+  const addApplication = evt => {
+    evt.preventDefault()
+    console.log("Add Application")
+  }
 
   return (
     <>
       <h2>New Application</h2>
-      <form>
+      <form onSubmit={addApplication}>
         <h5 className="error-msg">{message}</h5>
         <div className='form-field'>
           <label htmlFor="title">Title: </label>
@@ -26,6 +41,18 @@ export default function CreateJob() {
           <label htmlFor="description">Description: </label>
           <textarea name="description" id="description" rows={4} cols={50} required/>
         </div>
+
+        <div className="form-field">
+          <label htmlFor="add-skill">Skill:</label>
+          <input type="text" name="add-skill" id="add-skill" />
+          <button onClick={addSkill}>Add Skill</button>
+        </div>
+
+
+        <div id="skills">
+          {skills.map(skill => <div>{skill}</div>)}
+        </div>
+
         <div className='form-field'>
           <label htmlFor="status">Status:</label>
           <select name="status" id="status">
