@@ -21,8 +21,9 @@ export default function CreateJob() {
     evt.preventDefault()
     const field = evt.target.parentElement.childNodes[1]
     const attr = field.value
+    const name = field.name.slice(4)
     if(!attr.length) {
-      setMessage(`The ${field.name.slice(4)} field must not be empty when adding a ${field.name.slice(4)}`)
+      setMessage(`The ${name} field must not be empty when adding a ${name}`)
       return
     }
     field.value = ""
@@ -30,14 +31,14 @@ export default function CreateJob() {
       if(skills.indexOf(attr) < 0) {
         setSkills([...skills, attr])
       } else {
-        setMessage("Skill already added!")
+        setMessage(`The ${name} "${attr}" has already been added!`)
       }
     }
     if(field.name === "add-value") {
       if(values.indexOf(attr) < 0) {
         setValues([...values, attr])
       } else {
-        setMessage("Skill already added!")
+        setMessage(`The ${name} "${attr}" has already been added!`)
       }
     }
   }
