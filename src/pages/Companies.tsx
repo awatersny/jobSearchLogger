@@ -14,10 +14,9 @@ export default function Companies() {
       <h2>Companies You've Applied To</h2>
       {companies.map(company => <div>
         <Company
-          name = {company.name}
-          description = {company.description}
-          values = {company.values}
-          website = {company.website}
+          key = {company._id}
+          showDetails={true}
+          id = {company._id}
         />
         <br />
       </div>)}

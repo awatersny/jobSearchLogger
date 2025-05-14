@@ -23,6 +23,7 @@ export default function Jobs() {
               description={job.description}
               skills={job.skills}
               status={job.status}
+              company={job.company}
             />
           </li>)}
         </ul>

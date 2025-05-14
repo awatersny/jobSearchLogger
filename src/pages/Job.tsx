@@ -1,9 +1,12 @@
-import React from 'react'
+import Company from "./Company"
 
-export default function Job({ title, description, skills, status }) {
+export default function Job({ title, description, skills, status, company }) {
   return (
     <div className='info'>
       <div><b>Title: </b>{title}</div>
+      {company ? <div>
+        <Company showDetails={false} id={company}/>
+      </div> : <></>}
       <div><b>Description: </b>{description}</div>
       <div>
       <u><b>Skills</b></u>

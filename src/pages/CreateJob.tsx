@@ -94,7 +94,7 @@ export default function CreateJob() {
           if(res.data.msg) {
             setMessage(res.data.msg)
           } else {
-            console.log(res.data)
+            nav('/jobs')
           }
         })
       } else {
@@ -114,6 +114,7 @@ export default function CreateJob() {
             <label htmlFor="title">Title: </label>
             <input type="text" id="title" name="title" required/>
           </div>
+          
     
           <div className="form-field">
             <label htmlFor="company">Company: </label>
@@ -124,17 +125,17 @@ export default function CreateJob() {
                 name="company" 
                 id="company"
               >
-                {companies.map((company, idx) => 
-                  <option 
-                    key={company._id} 
-                    value={JSON.stringify(company)} 
-                    
-                  >
-                    {company.name}
-                  </option>
+                {companies.map(company => (
+                    <option key={company._id} value={JSON.stringify(company)}>
+                      {company.name}
+                    </option>
+                  )
                 )}
               </select>
             }
+          <button onClick={changeCompanyInput}>
+            {isNewCompany ? "Use Existing Company" : "Add New Company"}
+          </button>
           </div>
           {isNewCompany ? 
             <>
@@ -158,18 +159,10 @@ export default function CreateJob() {
           : 
             company._id ?
             <Company
-              name = {company.name}
-              description = {company.description}
-              values = {company.values}
-              website = {company.website}
+              showDetails={true}
+              id = {company._id}
             /> : <></>
           }
-
-
-          <button onClick={changeCompanyInput}>
-            {isNewCompany ? "Use Existing Company" : "Add New Company"}
-          </button>
-
           <div className='form-field'>
             <label htmlFor="description">Job Description:</label>
             <textarea name="description" id="description" rows={4} required/>
