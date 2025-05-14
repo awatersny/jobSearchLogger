@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getAllCompanies, addNewCompany, addNewJob } from '../services/jobSearchLoggerAPI'
+import { getAllCompanies, addNewCompany, addNewJob, getCompany } from '../services/jobSearchLoggerAPI'
 import Company from './Company'
 
 export default function CreateJob() {
@@ -60,7 +60,8 @@ export default function CreateJob() {
       title: evt.target.title.value,
       description: evt.target.description.value,
       skills: skills,
-      website: evt.target.website.value
+      website: evt.target.website.value,
+      status: evt.target.status.value
     }
     if(isNewCompany) {
       const companyData = {
@@ -69,13 +70,24 @@ export default function CreateJob() {
         values: values,
         website: evt.target.website.value
       }
-      console.log(companyData)
+      addNewCompany(companyData).then(res => {
+        if(res.data.msg) {
+          setMessage(res.data.msg)
+        } else {
+          addNewJob(jobData).then(res => {
+            if(res.data.msg) {
+              setMessage(res.data.msg)
+            } else {
+              console.log(res.data)
+            }
+          })
+        }
+      })
     } else {
       console.log(company)
     }
-    console.log(jobData)
   }
-  //TODO Add more conditional rendering for the rest of the company fields
+
   return (
     <>
       <h2>New Application</h2>
