@@ -24,6 +24,10 @@
   width: 100%;
 }
 
+textarea {
+  width: 67%;
+}
+
 label {
   margin: 5px;
 }
@@ -54,6 +58,6 @@ form, .info {
   justify-content: center;
   width: 40%;
   margin: 20px;
-  padding: 10px;
+  padding: 20px;
   border: 10px outset black;
 }

@@ -4,6 +4,7 @@ import { getAllCompanies } from '../services/jobSearchLoggerAPI'
 export default function CreateJob() {
   const [companies, setCompanies] = useState([])
   const [skills, setSkills] = useState([])
+  const [values, setValues] = useState([])
   const [message, setMessage] = useState("")
   const [isNewCompany, setIsNewCompany] = useState(true)
   const statuses = ["applied", "interviewing", "offered", "rejected"]
@@ -12,15 +13,24 @@ export default function CreateJob() {
     getAllCompanies().then(res => setCompanies(res.data))
   }, [])
 
-  const addSkill = evt => {
+  const addAttr = evt => {
     evt.preventDefault()
     const field = evt.target.parentElement.childNodes[1]
-    const skill = field.value
+    const attr = field.value
     field.value = ""
-    if(skills.indexOf(skill) < 0) {
-      setSkills([...skills, skill])
-    } else {
-      setMessage("Skill already added!")
+    if(field.name === "add-skill") {
+      if(skills.indexOf(attr) < 0) {
+        setSkills([...skills, attr])
+      } else {
+        setMessage("Skill already added!")
+      }
+    }
+    if(field.name === "add-value") {
+      if(values.indexOf(attr) < 0) {
+        setValues([...values, attr])
+      } else {
+        setMessage("Skill already added!")
+      }
     }
   }
 
@@ -59,23 +69,40 @@ export default function CreateJob() {
               </select>
             }
           </div>
+          <div className="form-field">
+            <label htmlFor="comp-descr">Company Description:</label>
+            <textarea name="comp-descr" id="comp-descr" rows={4}></textarea>
+          </div>
+          <div className="form-field">
+            <label htmlFor="add-value">Company Values:</label>
+            <input type="text" name="add-value" id="add-value" />
+            <button onClick={addAttr}>Add Value</button>
+          </div>
+
+          <div className="attr-container">
+            {values.map(value => <div>{value}</div>)}
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="website">Website:</label>
+            <input type="text" name="website" id="website" />
+          </div>
           <button onClick={changeCompanyInput}>
             {isNewCompany ? "Use Existing Company" : "Add New Company"}
           </button>
 
           <div className='form-field'>
-            <label htmlFor="description">Description: </label>
-            <textarea name="description" id="description" rows={4} cols={50} required/>
+            <label htmlFor="description">Job Description:</label>
+            <textarea name="description" id="description" rows={4} required/>
           </div>
 
           <div className="form-field">
-            <label htmlFor="add-skill">Skill:</label>
+            <label htmlFor="add-skill">Skills:</label>
             <input type="text" name="add-skill" id="add-skill" />
-            <button onClick={addSkill}>Add Skill</button>
+            <button onClick={addAttr}>Add Skill</button>
           </div>
 
-
-          <div id="skills">
+          <div className="attr-container">
             {skills.map(skill => <div>{skill}</div>)}
           </div>
 
