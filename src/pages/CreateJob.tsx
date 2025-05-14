@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { getAllCompanies } from '../services/jobSearchLoggerAPI'
 import Company from './Company'
 
@@ -10,6 +11,7 @@ export default function CreateJob() {
   const [message, setMessage] = useState("")
   const [isNewCompany, setIsNewCompany] = useState(true)
   const statuses = ["applied", "interviewing", "offered", "rejected"]
+  const nav = useNavigate()
   
   useEffect(() => {
     getAllCompanies().then(res => setCompanies(res.data))
