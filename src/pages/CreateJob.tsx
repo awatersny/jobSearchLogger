@@ -17,6 +17,10 @@ export default function CreateJob() {
     getAllCompanies().then(res => setCompanies(res.data))
   }, [])
 
+  useEffect(() => {
+    setCompany(companies[0])
+  }, [companies])
+
   const addAttr = evt => {
     evt.preventDefault()
     const field = evt.target.parentElement.childNodes[1]
@@ -60,8 +64,8 @@ export default function CreateJob() {
       title: evt.target.title.value,
       description: evt.target.description.value,
       skills: skills,
-      website: evt.target.website.value,
-      status: evt.target.status.value
+      status: evt.target.status.value,
+      company: null
     }
     if(isNewCompany) {
       const companyData = {
@@ -84,7 +88,18 @@ export default function CreateJob() {
         }
       })
     } else {
-      console.log(company)
+      if(company._id) {
+        jobData.company = company._id
+        addNewJob(jobData).then(res => {
+          if(res.data.msg) {
+            setMessage(res.data.msg)
+          } else {
+            console.log(res.data)
+          }
+        })
+      } else {
+        setMessage("Please select a company.")
+      }
     }
   }
 
@@ -104,7 +119,7 @@ export default function CreateJob() {
             <label htmlFor="company">Company: </label>
             {isNewCompany ? 
               <input type="text" name="company" id="company" /> :
-              <select 
+              <select
                 onChange={showSelectedCompany} 
                 name="company" 
                 id="company"
