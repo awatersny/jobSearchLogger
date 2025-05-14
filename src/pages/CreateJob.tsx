@@ -19,6 +19,10 @@ export default function CreateJob() {
     evt.preventDefault()
     const field = evt.target.parentElement.childNodes[1]
     const attr = field.value
+    if(!attr.length) {
+      setMessage(`The ${field.name.slice(4)} field must not be empty when adding a ${field.name.slice(4)}`)
+      return
+    }
     field.value = ""
     if(field.name === "add-skill") {
       if(skills.indexOf(attr) < 0) {
@@ -49,7 +53,11 @@ export default function CreateJob() {
 
   const addApplication = evt => {
     evt.preventDefault()
-    console.log("Add Application")
+    if(isNewCompany) {
+      console.log("Add Application For New Company")
+    } else {
+      console.log("Add Application For Previous Company")
+    }
   }
   //TODO Add more conditional rendering for the rest of the company fields
   return (
@@ -68,9 +76,17 @@ export default function CreateJob() {
             <label htmlFor="company">Company: </label>
             {isNewCompany ? 
               <input type="text" name="company" id="company" /> :
-              <select onChange={showSelectedCompany} name="" id="">
-                {companies.map(company => 
-                  <option key={company._id} value={JSON.stringify(company)}>
+              <select 
+                onChange={showSelectedCompany} 
+                name="company" 
+                id="company"
+              >
+                {companies.map((company, idx) => 
+                  <option 
+                    key={company._id} 
+                    value={JSON.stringify(company)} 
+                    
+                  >
                     {company.name}
                   </option>
                 )}
@@ -97,12 +113,13 @@ export default function CreateJob() {
               </div>
             </>
           : 
+            company._id ?
             <Company
               name = {company.name}
               description = {company.description}
               values = {company.values}
               website = {company.website}
-            />
+            /> : <></>
           }
 
 
