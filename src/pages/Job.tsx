@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Job({ title, description, skills, status }) {
   return (
-    <>
+    <div className='info'>
       <div><b>Title: </b>{title}</div>
       <div><b>Description: </b>{description}</div>
       <div>
@@ -11,6 +11,6 @@ export default function Job({ title, description, skills, status }) {
       </div>
       <div><b>Status: </b>{status}</div>
       <br />
-    </>
+    </div>
   )
 }
