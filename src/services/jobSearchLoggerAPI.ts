@@ -39,3 +39,15 @@ export async function registerUser(user) {
   const response = await axios.post(URL, user)
   return response
 }
+
+export async function addNewCompany(company) {
+  const URL = `${baseURL}/companies`
+  const response = await axios.post(URL, company)
+  return response
+}
+
+export async function addNewJob(job) {
+  const URL = `${baseURL}/jobs`
+  const response = await axios.post(URL, job)
+  return response
+}
