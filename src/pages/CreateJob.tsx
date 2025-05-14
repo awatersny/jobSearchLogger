@@ -1,10 +1,11 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { getAllCompanies } from '../services/jobSearchLoggerAPI'
 
 export default function CreateJob() {
   const [companies, setCompanies] = useState([])
   const [skills, setSkills] = useState([])
   const [message, setMessage] = useState("")
+  const [isNewCompany, setIsNewCompany] = useState(true)
   const statuses = ["applied", "interviewing", "offered", "rejected"]
   
   useEffect(() => {
@@ -28,15 +29,39 @@ export default function CreateJob() {
     console.log("Add Application")
   }
 
+  const changeCompanyInput = evt => {
+    evt.preventDefault()
+    setIsNewCompany(!isNewCompany)
+  }
+
   return (
     <>
       <h2>New Application</h2>
       <form onSubmit={addApplication}>
         <h5 className="error-msg">{message}</h5>
+
         <div className='form-field'>
           <label htmlFor="title">Title: </label>
           <input type="text" id="title" name="title" required/>
         </div>
+
+        <div className="form-field">
+          <label htmlFor="company">Company: </label>
+          {isNewCompany ? 
+            <input type="text" name="company" id="company" /> :
+            <select name="" id="">
+              {companies.map(company => 
+                <option key={company._id} value={company}>
+                  {company.name}
+                </option>
+              )}
+            </select>
+          }
+          <button onClick={changeCompanyInput}>
+            {isNewCompany ? "Use Existing Company" : "Add New Company"}
+          </button>
+        </div>
+
         <div className='form-field'>
           <label htmlFor="description">Description: </label>
           <textarea name="description" id="description" rows={4} cols={50} required/>
