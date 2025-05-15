@@ -76,7 +76,6 @@ export default function CreateJob() {
       status: evt.target.status.value,
     }
     editJob(id, jobData).then(res => {
-      console.log(res.data)
       nav(-1)
     })
   }

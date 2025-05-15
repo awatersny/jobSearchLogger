@@ -11,7 +11,12 @@ export default function Company({ showDetails, id }) {
 
   return (
     <div className={showDetails ? "info" : "form-field"}>
-      <div className="info-field"><b>Company: </b>{company.name}</div>
+      <div className="info-field">
+        <b>Company: </b>
+        {company.name ?
+        `${company.name[0].toUpperCase()}${company.name.slice(1).toLowerCase()}`
+        : "Loading..."}
+      </div>
       {showDetails ? <>
       <div className="info-field"><b>Description: </b>{company.description}</div>
       <div ><u><b>Values</b></u></div>
