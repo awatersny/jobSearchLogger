@@ -20,7 +20,11 @@ export default function Job({ id, title, description, skills, status, company, s
       <div><b>Description: </b>{description}</div>
       <u><b>Skills</b></u>
       <div className="attr-container">
-          {skills.map(skill => <div className="attr">{skill}</div>)}
+          {skills.map(skill => 
+            <div className="attr">
+              {skill}
+            </div>
+          )}
       </div>
       <div><b>Status: </b>{status}</div>
       <br />

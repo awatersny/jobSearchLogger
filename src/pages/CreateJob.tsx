@@ -48,6 +48,24 @@ export default function CreateJob() {
     }
   }
 
+  const removeAttr = evt => {
+    evt.preventDefault()
+    const attrType = evt.target.parentElement.parentElement.parentElement.id
+    if(attrType === "skills"){
+      const currSkills = [...skills]
+      const currSkill = evt.target.parentElement.childNodes[0].childNodes[0].textContent
+      const currDex = skills.indexOf(currSkill)
+      currSkills.splice(currDex, 1)
+      setSkills(currSkills)
+    }if(attrType === "values"){
+      const currValues = [...values]
+      const currValue = evt.target.parentElement.childNodes[0].childNodes[0].textContent
+      const currDex = values.indexOf(currValue)
+      currValues.splice(currDex, 1)
+      setValues(currValues)
+    }
+  }
+
   const showSelectedCompany = evt => {
     evt.preventDefault()
     const companyData = JSON.parse(evt.target.value)
@@ -151,13 +169,20 @@ export default function CreateJob() {
                 <label htmlFor="compDescr">Company Description:</label>
                 <textarea name="compDescr" id="comp-descr" rows={4}></textarea>
               </div>
-              <div className="form-field">
-                <label htmlFor="add-value">Company Values:</label>
-                <input type="text" name="add-value" id="add-value" />
-                <button onClick={addAttr}>+</button>
-              </div>
-              <div className="attr-container">
-                {values.map(value => <div className='attr'>{value}</div>)}
+
+              <div className="attr-field" id="values">
+                <div className="form-field">
+                  <label htmlFor="add-value">Company Values:</label>
+                  <input type="text" name="add-value" id="add-value" />
+                  <button onClick={addAttr}>+</button>
+                </div>
+                <div className="attr-container">
+                  {values.map(value => 
+                  <div className='attr'>
+                    <span className='attr-name'>{value}</span>
+                    <button onClick={removeAttr} className="delete">X</button>
+                  </div>)}
+                </div>
               </div>
               <div className="form-field">
                 <label htmlFor="website">Website:</label>
@@ -177,14 +202,19 @@ export default function CreateJob() {
             <textarea name="description" id="description" rows={4} required/>
           </div>
 
-          <div className="form-field">
-            <label htmlFor="add-skill">Add Skill:</label>
-            <input type="text" name="add-skill" id="add-skill" />
-            <button onClick={addAttr}>+</button>
-          </div>
-
-          <div className="attr-container">
-            {skills.map(skill => <div className='attr'>{skill}</div>)}
+          <div className="attr-field" id="skills">
+            <div className="form-field">
+              <label htmlFor="add-skill">Add Skill:</label>
+              <input type="text" name="add-skill" id="add-skill" />
+              <button onClick={addAttr}>+</button>
+            </div>
+            <div className="attr-container">
+              {skills.map(skill => 
+              <div className='attr'>
+                <span className='attr-name'>{skill}</span>
+                <button onClick={removeAttr} className="delete">X</button>
+              </div>)}
+            </div>
           </div>
 
           <div className='form-field'>
