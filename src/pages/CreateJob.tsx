@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getAllCompanies, addNewCompany, addNewJob, getAllJobs } from '../services/jobSearchLoggerAPI'
+import { getAllCompanies, addNewCompany, addNewJob, getAllJobs, addJobToCompany } from '../services/jobSearchLoggerAPI'
 import Company from './Company'
 
 export default function CreateJob() {
@@ -121,9 +121,11 @@ export default function CreateJob() {
               if(res.data.msg) {
                 setMessage(res.data.msg)
               } else {
-                console.log(res.data[1].id)
-                console.log(jobData.company)
-                nav('/jobs')
+                // console.log(res.data[1].id)
+                // console.log(jobData.company)
+                addJobToCompany(res.data[1].id, jobData.company).then(res => {
+                  nav('/jobs')
+                })
               }
             })
           })
@@ -136,9 +138,12 @@ export default function CreateJob() {
           if(res.data.msg) {
             setMessage(res.data.msg)
           } else {
-            console.log(res.data[1].id)
-            console.log(company._id)
-            nav('/jobs')
+            // console.log(res.data[1].id)
+            // console.log(company._id)
+            addJobToCompany(res.data[1].id, company._id).then(res => {
+              console.log(res.data)
+              nav('/jobs')
+            })
           }
         })
       } else {
