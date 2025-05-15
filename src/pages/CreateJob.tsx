@@ -80,6 +80,12 @@ export default function CreateJob() {
   //Form Submission
   const addApplication = evt => {
     evt.preventDefault()
+    if (companies.find(company => 
+      company.name.toLowerCase() == evt.target.company.value.toLowerCase()
+    )){
+      setMessage(`You've applied to this company before.  Please click "Use Existing Company" and select it from the dropdown menu."`)
+      return
+    }
     const jobData = {
       title: evt.target.title.value,
       description: evt.target.description.value,
@@ -180,7 +186,7 @@ export default function CreateJob() {
                   {values.map(value => 
                   <div className='attr'>
                     <span className='attr-name'>{value}</span>
-                    <button onClick={removeAttr} className="delete">X</button>
+                    <span onClick={removeAttr} className="delete">X</span>
                   </div>)}
                 </div>
               </div>
@@ -212,7 +218,7 @@ export default function CreateJob() {
               {skills.map(skill => 
               <div className='attr'>
                 <span className='attr-name'>{skill}</span>
-                <button onClick={removeAttr} className="delete">X</button>
+                <span onClick={removeAttr} className="delete">X</span>
               </div>)}
             </div>
           </div>

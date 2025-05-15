@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getAllCompanies, addNewCompany, addNewJob, getCompany, getJob } from '../services/jobSearchLoggerAPI'
+import { getAllCompanies, getCompany, getJob } from '../services/jobSearchLoggerAPI'
 import Company from './Company'
 
 export default function CreateJob() {

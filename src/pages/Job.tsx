@@ -5,7 +5,6 @@ import { deleteJob, getAllJobs } from "../services/jobSearchLoggerAPI"
 export default function Job({ id, title, description, skills, status, company, setJobs }) {
   const deleteApplication = evt => {
     evt.preventDefault()
-    console.log(1)
     deleteJob(id).then(res => {
       getAllJobs().then(res => setJobs(res.data))
     })

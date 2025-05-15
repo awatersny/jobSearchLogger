@@ -58,14 +58,15 @@ export default function EditCompany() {
         <h5 className="error-msg">{message}</h5>
         <div className="form-field">
           <label htmlFor="name">Company:</label>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" defaultValue={company.name}/>
         </div>
         <div className="form-field">
           <label htmlFor="description">Description:</label>
           <textarea 
               name="description" 
               id="description" 
-              rows={4} 
+              rows={4}
+              defaultValue={company.description} 
               required
             />
         </div>
@@ -85,7 +86,12 @@ export default function EditCompany() {
 
         <div className="form-field">
           <label htmlFor="website">Website:</label>
-          <input type="text" name="website" id="website" />
+          <input 
+            type="text" 
+            name="website" 
+            id="website" 
+            defaultValue={company.website}
+          />
         </div>
         <button>Update</button>
       </form>

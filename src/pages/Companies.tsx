@@ -9,8 +9,6 @@ export default function Companies() {
     getAllCompanies().then(res => setCompanies(res.data))
   }, [])
 
-  console.log(companies.find(company => company.name == "Amazon"))
-
   return (
     <>
       <h2>Companies You've Applied To</h2>
