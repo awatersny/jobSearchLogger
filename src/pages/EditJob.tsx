@@ -68,22 +68,16 @@ export default function CreateJob() {
   }
 
   //Form Submission
-  const addApplication = evt => {
+  const saveChanges = evt => {
     evt.preventDefault()
-    const jobData = {
-      title: evt.target.title.value,
-      description: evt.target.description.value,
-      skills: skills,
-      status: evt.target.status.value,
-      company: company._id
-    }
+    console.log(1)
   }
 
   return (
     <>
       <h2>Update Application</h2>
       <main>
-        <form onSubmit={addApplication}>
+        <form onSubmit={saveChanges}>
           <h5 className="error-msg">{message}</h5>
 
           <div className='form-field'>

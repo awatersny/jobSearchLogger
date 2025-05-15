@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { getCompany } from "../services/jobSearchLoggerAPI"
+import { getAllCompanies, getCompany } from "../services/jobSearchLoggerAPI"
 import { useParams } from "react-router-dom"
 
 export default function EditCompany() {
+  const [companies, setCompanies] = useState([])
   const [company, setCompany] = useState({})
   const [message, setMessage] = useState("")
   const [values, setValues] = useState([])
@@ -13,6 +14,10 @@ export default function EditCompany() {
       setCompany(res.data)
       setValues(res.data.values)
     })
+  }, [])
+
+  useEffect(() => {
+    getAllCompanies().then(res => setCompanies(res.data))
   }, [])
 
   const addAttr = evt => {
@@ -50,16 +55,18 @@ export default function EditCompany() {
     setValues(currValues)
   }
 
+  const saveChanges = evt => {
+    evt.preventDefault()
+    
+  }
+
   return (
     <>
     <h2>EditCompany</h2>
     <main>
-      <form>
-        <h5 className="error-msg">{message}</h5>
-        <div className="form-field">
-          <label htmlFor="name">Company:</label>
-          <input type="text" name="name" id="name" defaultValue={company.name}/>
-        </div>
+      <form onSubmit={saveChanges}>
+        <h4 className="error-msg">{message}</h4>
+        <h2>{company.name}</h2>
         <div className="form-field">
           <label htmlFor="description">Description:</label>
           <textarea 
@@ -72,7 +79,7 @@ export default function EditCompany() {
         </div>
 
         <div className="form-field">
-          <label htmlFor="add-value">Company Values:</label>
+          <label htmlFor="add-value">Add Value:</label>
           <input type="text" name="add-value" id="add-value" />
           <div onClick={addAttr} className='button' >+</div>
         </div>
