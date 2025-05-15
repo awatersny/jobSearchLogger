@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getAllCompanies, addNewCompany, addNewJob, getCompany } from '../services/jobSearchLoggerAPI'
+import { getAllCompanies, addNewCompany, addNewJob } from '../services/jobSearchLoggerAPI'
 import Company from './Company'
 
 export default function CreateJob() {
@@ -13,6 +13,7 @@ export default function CreateJob() {
   const [isNewCompany, setIsNewCompany] = useState(true)
   const statuses = ["applied", "interviewing", "offered", "rejected"]
   const nav = useNavigate()
+  const validateURL = /^http[s]?:\/\/(www.)?\w+\.[a-z]+[.\w{2,3}]+\/?$/
   
   useEffect(() => {
     getAllCompanies().then(res => setCompanies(res.data))
@@ -85,6 +86,15 @@ export default function CreateJob() {
     )){
       setMessage(`You've applied to this company before.  Please click "Use Existing Company" and select it from the dropdown menu."`)
       return
+    } else {
+      setMessage("")
+    }
+    console.log(validateURL.test(evt.target.website.value))
+    if(!validateURL.test(evt.target.website.value)){
+      setMessage(`Please set a valid URL.  Example:"https://www.google.com"`)
+      return
+    } else {
+      setMessage("")
     }
     const jobData = {
       title: evt.target.title.value,
@@ -192,7 +202,12 @@ export default function CreateJob() {
               </div>
               <div className="form-field">
                 <label htmlFor="website">Website:</label>
-                <input type="text" name="website" id="website" />
+                <input 
+                  type="text" 
+                  name="website" 
+                  id="website" 
+                  placeholder='example: https://www.google.com'
+                />
               </div>
             </>
           : 

@@ -86,7 +86,7 @@ export default function CreateJob() {
       <main>
         <form onSubmit={saveChanges}>
           <div className='back'>
-            <Link to="/jobs">Back</Link>
+            <div onClick={evt => {nav(-1)}}>Back</div>
           </div>
           <h5 className="error-msg">{message}</h5>
 

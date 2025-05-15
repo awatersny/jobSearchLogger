@@ -27,7 +27,9 @@ export default function Company({ showDetails, id }) {
         </div>)
       : <div>None Recorded</div> : <div>Loading...</div>}
       </div>
-      <div className="website-field"><b><u>Website</u></b>{company.website}</div>
+      <div className="website-field"><b><u>Website</u></b>
+        <a href={company.website} target="_blank">{company.website}</a>
+      </div>
       <div className="menu">
         <Link to = {`/companies/${id}/edit`}>Edit</Link>
       </div>

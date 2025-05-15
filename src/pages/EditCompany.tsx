@@ -9,6 +9,7 @@ export default function EditCompany() {
   const [values, setValues] = useState([])
   const { id } = useParams()
   const nav = useNavigate()
+  const validateURL = /^http[s]?:\/\/(www.)?\w+\.[a-z]+[.\w{2,3}]+\/?$/
 
   useEffect(() => {
     getCompany(id).then(res => {
@@ -75,6 +76,9 @@ export default function EditCompany() {
     <h2>Edit Company</h2>
     <main>
       <form onSubmit={saveChanges}>
+        <div className='back'>
+          <div onClick={evt => {nav(-1)}}>Back</div>
+        </div>
         <h4 className="error-msg">{message}</h4>
         <h2>
           {
