@@ -119,7 +119,7 @@ export default function CreateJob() {
               {skills.map(skill => 
               <div className='attr'>
                 <span className='attr-name'>{skill}</span>
-                <button onClick={removeSkill} className="delete">X</button>
+                <span onClick={removeSkill} className="delete">X</span>
               </div>)}
             </div>
 
@@ -132,9 +132,7 @@ export default function CreateJob() {
               {statuses.map(status => <option value={status}>{status}</option>)}
             </select>
           </div>
-          <div className="form-field">
-            <button type="submit">Submit</button>
-          </div>
+          <button type="submit">Update</button>
         </form>
       </main>
     </>

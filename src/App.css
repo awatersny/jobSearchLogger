@@ -58,8 +58,9 @@
 
 .attr {
   margin: 10px;
-  padding: 5px;
+  padding: 10px;
   border: 5px outset black;
+  height: 20px;
 }
 
 .attr-name {
@@ -73,13 +74,6 @@
   margin: 10px;
 }
 
-.delete {
-  background-color: red;
-  color: white;
-  height: 30px;
-  line-height: 10px;
-}
-
 .button, button {
   padding: 5px;
   background-color: black;
@@ -88,6 +82,19 @@
   cursor: pointer;
   min-width: 20px;
   text-align: center;
+}
+
+.delete {
+  padding: 1px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  border: 5px outset black;
+}
+
+.delete:hover {
+  border: 5px inset black;
 }
 
 .button:hover, button:hover{
@@ -130,8 +137,18 @@ form, .info {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 40%;
   margin: 20px;
   padding: 20px;
   border: 10px outset black;
+  width: 60%;;
+}
+
+select {
+  color: white;
+  background-color: black;
+  border: 5px inset black;
+}
+
+.info {
+  max-width: 40%;
 }
