@@ -58,6 +58,7 @@ export default function CreateJob() {
     setIsNewCompany(!isNewCompany)
   }
 
+  //Form Submission
   const addApplication = evt => {
     evt.preventDefault()
     const jobData = {
@@ -94,7 +95,7 @@ export default function CreateJob() {
           if(res.data.msg) {
             setMessage(res.data.msg)
           } else {
-            nav('/jobs')
+            console.log(res.data)
           }
         })
       } else {
@@ -146,7 +147,7 @@ export default function CreateJob() {
               <div className="form-field">
                 <label htmlFor="add-value">Company Values:</label>
                 <input type="text" name="add-value" id="add-value" />
-                <button onClick={addAttr}>Add Value</button>
+                <button onClick={addAttr}>+</button>
               </div>
               <div className="attr-container">
                 {values.map(value => <div className='attr'>{value}</div>)}
@@ -171,7 +172,7 @@ export default function CreateJob() {
           <div className="form-field">
             <label htmlFor="add-skill">Skills:</label>
             <input type="text" name="add-skill" id="add-skill" />
-            <button onClick={addAttr}>Add Skill</button>
+            <button onClick={addAttr}>+</button>
           </div>
 
           <div className="attr-container">

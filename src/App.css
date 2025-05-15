@@ -44,6 +44,23 @@
   border: 5px outset black;
 }
 
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.delete {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+}
+
+button {
+  min-width: 30px;
+}
+
 input {
   width: 50%;
 }

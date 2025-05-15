@@ -16,16 +16,23 @@ export default function Jobs() {
       <h2>Previous Applications</h2>
       <main>
         <ul>
-          {jobs.map((job) => <li>
-            <Job
-              key={job.id}
-              title={job.title}
-              description={job.description}
-              skills={job.skills}
-              status={job.status}
-              company={job.company}
-            />
-          </li>)}
+          {
+          jobs.length ? 
+            jobs.map((job) => <li>
+              <Job
+                key={job._id}
+                id={job._id}
+                title={job.title}
+                description={job.description}
+                skills={job.skills}
+                status={job.status}
+                company={job.company}
+              />
+            </li>) :
+            <div className='info'>
+              No applications to show
+            </div>
+          }
         </ul>
       </main>
     </>
