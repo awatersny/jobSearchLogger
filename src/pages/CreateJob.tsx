@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getAllCompanies, addNewCompany, addNewJob } from '../services/jobSearchLoggerAPI'
+import { getAllCompanies, addNewCompany, addNewJob, getAllJobs } from '../services/jobSearchLoggerAPI'
 import Company from './Company'
 
 export default function CreateJob() {
@@ -23,7 +23,7 @@ export default function CreateJob() {
     setCompany(companies[0])
   }, [companies])
 
-  const addAttr = evt => {
+  const addAttr = (evt) => {
     evt.preventDefault()
     const field = evt.target.parentElement.childNodes[1]
     const attr = field.value
@@ -89,11 +89,13 @@ export default function CreateJob() {
     } else {
       setMessage("")
     }
-    if(!validateURL.test(evt.target.website.value)){
-      setMessage(`Please set a valid URL.  Example:"https://www.google.com"`)
-      return
-    } else {
-      setMessage("")
+    if(isNewCompany){
+      if(!validateURL.test(evt.target.website.value)){
+        setMessage(`Please set a valid URL.  Example:"https://www.google.com"`)
+        return
+      } else {
+        setMessage("")
+      }
     }
     const jobData = {
       title: evt.target.title.value,
@@ -114,7 +116,7 @@ export default function CreateJob() {
           setMessage(res.data.msg)
         } else {
           getAllCompanies().then(res => {
-            jobData.company = res.data.find(company => company.name == companyData.name)._id
+            jobData.company = res.data.find((company) => company.name == companyData.name)._id
             addNewJob(jobData).then(res => {
               if(res.data.msg) {
                 setMessage(res.data.msg)

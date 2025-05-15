@@ -14,7 +14,7 @@ export default function Company({ showDetails, id }) {
       <div className="info-field">
         <b>Company: </b>
         {company.name ?
-        `${company.name[0].toUpperCase()}${company.name.slice(1).toLowerCase()}`
+        `${company.name[0].toUpperCase()}${company.name.slice(1)}`
         : "Loading..."}
       </div>
       {showDetails ? <>

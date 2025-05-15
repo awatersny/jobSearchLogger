@@ -10,7 +10,7 @@ export async function getAllJobs() {
   return response
 }
 
-export async function getJob(id) {
+export async function getJob(id: string) {
   const URL = `${baseURL}/jobs/${id}`
   const response = await axios.get(URL)
   return response
@@ -22,55 +22,55 @@ export async function getAllCompanies() {
   return response
 }
 
-export async function getCompany(id) {
+export async function getCompany(id: string) {
   const URL = `${baseURL}/companies/${id}`
   const response = await axios.get(URL)
   return response
 }
 
-export async function loginUser(user) {
+export async function loginUser(user: object) {
   const URL = `${baseURL}/auth/login`
   const response = await axios.post(URL, user)
   return response
 }
 
-export async function registerUser(user) {
+export async function registerUser(user: object) {
   const URL = `${baseURL}/auth/register`
   const response = await axios.post(URL, user)
   return response
 }
 
-export async function addNewCompany(company) {
+export async function addNewCompany(company: object) {
   const URL = `${baseURL}/companies`
   const response = await axios.post(URL, company)
   return response
 }
 
-export async function addNewJob(job) {
+export async function addNewJob(job: object) {
   const URL = `${baseURL}/jobs`
   const response = await axios.post(URL, job)
   return response
 }
 
-export async function editJob(id, job) {
+export async function editJob(id: string, job: object) {
   const URL = `${baseURL}/jobs/${id}`
   const response = await axios.put(URL, job)
   return response
 }
 
-export async function deleteJob(id) {
+export async function deleteJob(id: string) {
   const URL = `${baseURL}/jobs/${id}`
   const response = await axios.delete(URL)
   return response
 }
 
-export async function editCompany(id, company) {
+export async function editCompany(id: string, company: object) {
   const URL = `${baseURL}/companies/${id}`
   const response = await axios.put(URL, company)
   return response
 }
 
-export async function deleteCompany(id) {
+export async function deleteCompany(id: string) {
   const URL = `${baseURL}/companies/${id}`
   const response = await axios.delete(URL)
   return response
