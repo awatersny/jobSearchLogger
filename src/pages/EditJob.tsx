@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getAllCompanies, getCompany, getJob } from '../services/jobSearchLoggerAPI'
+import { editJob, getAllCompanies, getCompany, getJob } from '../services/jobSearchLoggerAPI'
 import { Link } from 'react-router-dom'
 import Company from './Company'
 
@@ -69,7 +69,16 @@ export default function CreateJob() {
   //Form Submission
   const saveChanges = evt => {
     evt.preventDefault()
-    console.log(1)
+    const jobData = {
+      title: evt.target.title.value,
+      description: evt.target.description.value,
+      skills: skills,
+      status: evt.target.status.value,
+    }
+    editJob(id, jobData).then(res => {
+      console.log(res.data)
+      nav(-1)
+    })
   }
 
   return (
