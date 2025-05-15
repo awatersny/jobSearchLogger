@@ -79,12 +79,15 @@ export default function CreateJob() {
         if(res.data.msg) {
           setMessage(res.data.msg)
         } else {
-          addNewJob(jobData).then(res => {
-            if(res.data.msg) {
-              setMessage(res.data.msg)
-            } else {
-              console.log(res.data)
-            }
+          getAllCompanies().then(res => {
+            jobData.company = res.data.find(company => company.name == companyData.name)._id
+            addNewJob(jobData).then(res => {
+              if(res.data.msg) {
+                setMessage(res.data.msg)
+              } else {
+                nav('/jobs')
+              }
+            })
           })
         }
       })

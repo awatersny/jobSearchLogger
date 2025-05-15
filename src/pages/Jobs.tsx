@@ -27,6 +27,7 @@ export default function Jobs() {
                 skills={job.skills}
                 status={job.status}
                 company={job.company}
+                setJobs={setJobs}
               />
             </li>) :
             <div className='info'>

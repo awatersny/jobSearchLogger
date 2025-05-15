@@ -1,14 +1,13 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Company from "./Company"
-import { deleteJob } from "../services/jobSearchLoggerAPI"
+import { deleteJob, getAllJobs } from "../services/jobSearchLoggerAPI"
 
-export default function Job({ id, title, description, skills, status, company }) {
-  const nav = useNavigate()
+export default function Job({ id, title, description, skills, status, company, setJobs }) {
   const deleteApplication = evt => {
     evt.preventDefault()
     console.log(1)
     deleteJob(id).then(res => {
-      nav('/')
+      getAllJobs().then(res => setJobs(res.data))
     })
   }
 
