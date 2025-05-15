@@ -59,6 +59,12 @@ export default function EditCompany() {
 
   const saveChanges = evt => {
     evt.preventDefault()
+    if(!validateURL.test(evt.target.website.value)){
+      setMessage(`Please set a valid URL.  Example:"https://www.google.com"`)
+      return
+    } else {
+      setMessage("")
+    }
     const companyData = {
       name: company.name,
       description: evt.target.description.value,
@@ -117,6 +123,7 @@ export default function EditCompany() {
             type="text" 
             name="website" 
             id="website" 
+            placeholder='example: https://www.google.com'
             defaultValue={company.website}
           />
         </div>

@@ -89,7 +89,6 @@ export default function CreateJob() {
     } else {
       setMessage("")
     }
-    console.log(validateURL.test(evt.target.website.value))
     if(!validateURL.test(evt.target.website.value)){
       setMessage(`Please set a valid URL.  Example:"https://www.google.com"`)
       return
