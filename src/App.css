@@ -76,10 +76,11 @@
 .delete {
   background-color: red;
   color: white;
-  border-radius: 10px;
+  height: 30px;
+  line-height: 10px;
 }
 
-.button {
+.button, button {
   padding: 5px;
   background-color: black;
   color: white;
@@ -89,7 +90,7 @@
   text-align: center;
 }
 
-.button:hover {
+.button:hover, button:hover{
   border: 5px inset black;
 }
 

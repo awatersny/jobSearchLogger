@@ -12,6 +12,7 @@ export default function CreateJob() {
   const [message, setMessage] = useState("")
   const { id } = useParams()
   const statuses = ["applied", "interviewing", "offered", "rejected"]
+  const [status, setStatus] = useState("")
   const nav = useNavigate()
   
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function CreateJob() {
     getJob(id)
       .then(res => {
         setJob(res.data)
+        setStatus(res.data.status)
         setSkills(res.data.skills)
         getCompany(res.data.company)
           .then(res => {
@@ -54,6 +56,15 @@ export default function CreateJob() {
         setMessage(`The ${name} "${attr}" has already been added!`)
       }
     }
+  }
+
+  const removeSkill = evt => {
+    evt.preventDefault()
+    const currSkills = [...skills]
+    const currSkill = evt.target.parentElement.childNodes[0].childNodes[0].textContent
+    const currDex = skills.indexOf(currSkill)
+    currSkills.splice(currDex, 1)
+    setSkills(currSkills)
   }
 
   //Form Submission
@@ -105,15 +116,19 @@ export default function CreateJob() {
           </div>
 
           <div className="attr-container">
-            {skills.map(skill => <div className='attr'>{skill}</div>)}
-          </div>
+              {skills.map(skill => 
+              <div className='attr'>
+                <span className='attr-name'>{skill}</span>
+                <button onClick={removeSkill} className="delete">X</button>
+              </div>)}
+            </div>
 
           <div className='form-field'>
-            <label htmlFor="status">Status: {job.status}</label>
+            <label htmlFor="status">Status: {status}</label>
             <select 
               name="status" 
               id="status" 
-              defaultValue={job.status}>
+              defaultValue={status}>
               {statuses.map(status => <option value={status}>{status}</option>)}
             </select>
           </div>
