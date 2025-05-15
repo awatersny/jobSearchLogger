@@ -5,6 +5,7 @@ import Company from './Company'
 
 export default function CreateJob() {
   const [companies, setCompanies] = useState([])
+  const [companyJobs, setCompanyJobs] = useState([])
   const [company, setCompany] = useState({})
   const [skills, setSkills] = useState([])
   const [values, setValues] = useState([])
@@ -98,7 +99,7 @@ export default function CreateJob() {
           if(res.data.msg) {
             setMessage(res.data.msg)
           } else {
-            console.log(res.data)
+            nav('/jobs')
           }
         })
       } else {
@@ -137,10 +138,13 @@ export default function CreateJob() {
                 )}
               </select>
             }
-          <button onClick={changeCompanyInput}>
-            {isNewCompany ? "Use Existing Company" : "Add New Company"}
-          </button>
+          {companies.length ?
+            <button onClick={changeCompanyInput}>
+              {isNewCompany ? "Use Existing Company" : "Add New Company"}
+            </button>
+          : <></>}
           </div>
+
           {isNewCompany ? 
             <>
               <div className="form-field">
@@ -167,13 +171,14 @@ export default function CreateJob() {
               id = {company._id}
             /> : <></>
           }
+
           <div className='form-field'>
             <label htmlFor="description">Job Description:</label>
             <textarea name="description" id="description" rows={4} required/>
           </div>
 
           <div className="form-field">
-            <label htmlFor="add-skill">Skills:</label>
+            <label htmlFor="add-skill">Add Skill:</label>
             <input type="text" name="add-skill" id="add-skill" />
             <button onClick={addAttr}>+</button>
           </div>

@@ -8,8 +8,8 @@ export default function NavBar() {
       <li><Link className='link' to="/jobs">Previous Applications</Link></li>
       <li><Link className='link' to="/companies">Companies You've Applied To</Link></li>
       <li><Link className='link' to="/jobs/new">Log New Application</Link></li>
-      <li><Link className='link' to="/login">Login</Link></li>
-      <li><Link className='link' to="/register">Register</Link></li>
+      {/* <li><Link className='link' to="/login">Login</Link></li>
+      <li><Link className='link' to="/register">Register</Link></li> */}
     </ul>
   )
 }

@@ -1,5 +1,6 @@
 import { getCompany } from "../services/jobSearchLoggerAPI"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 export default function Company({ showDetails, id }) {
   const [company, setCompany] = useState({})
@@ -14,10 +15,17 @@ export default function Company({ showDetails, id }) {
       {showDetails ? <>
       <div className="info-field"><b>Description: </b>{company.description}</div>
       <div ><u><b>Values</b></u></div>
-      {company.values ? company.values.length ? company.values.map(value => <div>
-        {value}
-      </div>) : <div>None Recorded</div> : <div>Loading...</div>}
-      <div className="info-field"><b>Website: </b>{company.website}</div>
+      <div className="attr-container">
+      {company.values ? company.values.length ? company.values.map(value => 
+        <div className="attr">
+          {value}
+        </div>)
+      : <div>None Recorded</div> : <div>Loading...</div>}
+      </div>
+      <div className="website-field"><b><u>Website</u></b>{company.website}</div>
+      <div className="menu">
+        <Link to = {`/companies/${id}/edit`}>Edit</Link>
+      </div>
       </> : <></>}
     </div>
   )
