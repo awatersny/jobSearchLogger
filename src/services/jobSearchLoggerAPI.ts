@@ -52,9 +52,9 @@ export async function addNewJob(job) {
   return response
 }
 
-export async function editJob(id) {
+export async function editJob(id, job) {
   const URL = `${baseURL}/jobs/${id}`
-  const response = await axios.put(URL)
+  const response = await axios.put(URL, job)
   return response
 }
 
@@ -64,9 +64,9 @@ export async function deleteJob(id) {
   return response
 }
 
-export async function editCompany(id) {
+export async function editCompany(id, company) {
   const URL = `${baseURL}/companies/${id}`
-  const response = await axios.put(URL)
+  const response = await axios.put(URL, company)
   return response
 }
 

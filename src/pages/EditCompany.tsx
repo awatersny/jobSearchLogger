@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { getAllCompanies, getCompany } from "../services/jobSearchLoggerAPI"
-import { useParams } from "react-router-dom"
+import { editCompany, getAllCompanies, getCompany } from "../services/jobSearchLoggerAPI"
+import { useNavigate, useParams } from "react-router-dom"
 
 export default function EditCompany() {
   const [companies, setCompanies] = useState([])
@@ -8,6 +8,7 @@ export default function EditCompany() {
   const [message, setMessage] = useState("")
   const [values, setValues] = useState([])
   const { id } = useParams()
+  const nav = useNavigate()
 
   useEffect(() => {
     getCompany(id).then(res => {
@@ -57,7 +58,16 @@ export default function EditCompany() {
 
   const saveChanges = evt => {
     evt.preventDefault()
-    
+    const companyData = {
+      name: company.name,
+      description: evt.target.description.value,
+      values: values,
+      website: evt.target.website.value
+    }
+    editCompany(id, companyData).then(res => {
+      console.log(res.data)
+      nav(-1)
+    })
   }
 
   return (
