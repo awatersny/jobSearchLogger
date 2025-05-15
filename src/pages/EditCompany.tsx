@@ -62,11 +62,17 @@ export default function EditCompany() {
 
   return (
     <>
-    <h2>EditCompany</h2>
+    <h2>Edit Company</h2>
     <main>
       <form onSubmit={saveChanges}>
         <h4 className="error-msg">{message}</h4>
-        <h2>{company.name}</h2>
+        <h2>
+          {
+            company.name ?
+          `${company.name[0].toUpperCase()}${company.name.slice(1).toLowerCase()}`
+          : "Loading..."
+          }
+        </h2>
         <div className="form-field">
           <label htmlFor="description">Description:</label>
           <textarea 

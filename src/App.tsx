@@ -9,8 +9,8 @@ import Company from './pages/Company'
 import EditJob from './pages/EditJob'
 import EditCompany from './pages/EditCompany'
 import CreateJob from './pages/CreateJob'
-import Register from './pages/Register'
-import Login from './pages/Login'
+// import Register from './pages/Register'
+// import Login from './pages/Login'
 
 function App() {
 

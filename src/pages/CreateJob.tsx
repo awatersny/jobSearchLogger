@@ -229,9 +229,7 @@ export default function CreateJob() {
               {statuses.map(status => <option value={status}>{status}</option>)}
             </select>
           </div>
-          <div className="form-field">
-            <button type="submit">Submit</button>
-          </div>
+          <button type="submit">Save Application</button>
         </form>
       </main>
     </>

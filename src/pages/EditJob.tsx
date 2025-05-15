@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getAllCompanies, getCompany, getJob } from '../services/jobSearchLoggerAPI'
+import { Link } from 'react-router-dom'
 import Company from './Company'
 
 export default function CreateJob() {
@@ -12,7 +13,6 @@ export default function CreateJob() {
   const [message, setMessage] = useState("")
   const { id } = useParams()
   const statuses = ["applied", "interviewing", "offered", "rejected"]
-  const [status, setStatus] = useState("")
   const nav = useNavigate()
   
   useEffect(() => {
@@ -23,7 +23,6 @@ export default function CreateJob() {
     getJob(id)
       .then(res => {
         setJob(res.data)
-        setStatus(res.data.status)
         setSkills(res.data.skills)
         getCompany(res.data.company)
           .then(res => {
@@ -78,6 +77,9 @@ export default function CreateJob() {
       <h2>Update Application</h2>
       <main>
         <form onSubmit={saveChanges}>
+          <div className='back'>
+            <Link to="/jobs">Back</Link>
+          </div>
           <h5 className="error-msg">{message}</h5>
 
           <div className='form-field'>
@@ -118,12 +120,14 @@ export default function CreateJob() {
             </div>
 
           <div className='form-field'>
-            <label htmlFor="status">Status: {status}</label>
+            <label htmlFor="status">Status: {job.status}</label>
             <select 
               name="status" 
               id="status" 
-              defaultValue={status}>
-              {statuses.map(status => <option value={status}>{status}</option>)}
+            >
+              {statuses.map(status => 
+                <option value={status}>{status}</option>
+              )}
             </select>
           </div>
           <button type="submit">Update</button>
