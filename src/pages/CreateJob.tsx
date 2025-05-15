@@ -157,9 +157,9 @@ export default function CreateJob() {
               </select>
             }
           {companies.length ?
-            <button onClick={changeCompanyInput}>
+            <div className='button' onClick={changeCompanyInput}>
               {isNewCompany ? "Use Existing Company" : "Add New Company"}
-            </button>
+            </div>
           : <></>}
           </div>
 
@@ -174,7 +174,7 @@ export default function CreateJob() {
                 <div className="form-field">
                   <label htmlFor="add-value">Company Values:</label>
                   <input type="text" name="add-value" id="add-value" />
-                  <button onClick={addAttr}>+</button>
+                  <div className='button' onClick={addAttr}>+</div>
                 </div>
                 <div className="attr-container">
                   {values.map(value => 
@@ -206,7 +206,7 @@ export default function CreateJob() {
             <div className="form-field">
               <label htmlFor="add-skill">Add Skill:</label>
               <input type="text" name="add-skill" id="add-skill" />
-              <button onClick={addAttr}>+</button>
+              <div className='button' onClick={addAttr}>+</div>
             </div>
             <div className="attr-container">
               {skills.map(skill => 
