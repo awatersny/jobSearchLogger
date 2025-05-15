@@ -121,6 +121,8 @@ export default function CreateJob() {
               if(res.data.msg) {
                 setMessage(res.data.msg)
               } else {
+                console.log(res.data[1].id)
+                console.log(jobData.company)
                 nav('/jobs')
               }
             })
@@ -134,6 +136,8 @@ export default function CreateJob() {
           if(res.data.msg) {
             setMessage(res.data.msg)
           } else {
+            console.log(res.data[1].id)
+            console.log(company._id)
             nav('/jobs')
           }
         })
