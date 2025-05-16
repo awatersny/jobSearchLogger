@@ -1,3 +1,7 @@
+body {
+  background-color: wheat;
+}
+
 #nav {
   display: flex;
   align-items: center;
@@ -151,7 +155,7 @@ h1 {
 }
 
 h2 {
-  border: 10px ridge black;
+  border: 10px ridge white;
   text-align: center;
   padding: 10px;
   width: 40%;
@@ -178,7 +182,7 @@ form, .info {
   justify-content: center;
   margin: 20px;
   padding: 20px;
-  border: 10px ridge wheat;
+  border: 10px ridge white;
   width: 60%;
   font-size: 16pt;
   background-color: #090909;
