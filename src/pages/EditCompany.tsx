@@ -79,7 +79,6 @@ export default function EditCompany() {
       website: evt.target.website.value
     }
     editCompany(id, companyData).then(res => {
-      console.log(res.data)
       nav(-1)
     })
   }

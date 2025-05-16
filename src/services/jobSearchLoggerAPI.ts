@@ -77,7 +77,6 @@ export async function deleteCompany(id: string) {
 }
 
 export async function addJobToCompany(jobId: string, companyId: string){
-  console.log(jobId, " ", companyId)
   const URL = `${baseURL}/companies/${companyId}`
   const response = await axios.patch(URL, {
     job: jobId
