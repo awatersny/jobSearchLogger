@@ -89,7 +89,7 @@ body {
 
 .button, button {
   padding: 5px;
-  background-color: black;
+  background-color: #333;
   color: white;
   border: 5px outset black;
   cursor: pointer;
@@ -113,6 +113,7 @@ body {
 
 .button:hover, button:hover{
   border: 5px inset black;
+  background-color: black;
 }
 
 .back {
