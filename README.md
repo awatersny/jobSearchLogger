@@ -6,6 +6,22 @@ You can find the a API repository [here](https://github.com/awatersny/jobSearchL
 
 ---
 
+___
+
+### Technologies Used
+
+- Typescript
+- Javascript
+- React.js
+- Vite
+- Express.js
+- Mongoose
+- MongoDB
+
+---
+
+### Screenshots
+
 ![](src/assets/0.png)
 
 ---

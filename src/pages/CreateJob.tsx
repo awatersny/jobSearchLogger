@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getAllCompanies, addNewCompany, addNewJob, getAllJobs, addJobToCompany } from '../services/jobSearchLoggerAPI'
+import { getAllCompanies, addNewCompany, addNewJob, addJobToCompany } from '../services/jobSearchLoggerAPI'
 import Company from './Company'
 
 export default function CreateJob() {
   const [companies, setCompanies] = useState([])
-  const [companyJobs, setCompanyJobs] = useState([])
   const [company, setCompany] = useState({})
   const [skills, setSkills] = useState([])
   const [values, setValues] = useState([])
