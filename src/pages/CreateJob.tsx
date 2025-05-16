@@ -194,7 +194,7 @@ export default function CreateJob() {
               <div className="attr-field" id="values">
                 <div className="form-field">
                   <label htmlFor="add-value">Company Values:</label>
-                  <input type="text" name="add-value" id="add-value" />
+                  <input type="text" name="add-value" id="add-value" maxLength={70}/>
                   <div className='button' onClick={addAttr}>+</div>
                 </div>
                 <div className="attr-container">
@@ -231,7 +231,7 @@ export default function CreateJob() {
           <div className="attr-field" id="skills">
             <div className="form-field">
               <label htmlFor="add-skill">Add Skill:</label>
-              <input type="text" name="add-skill" id="add-skill" />
+              <input type="text" name="add-skill" id="add-skill"  maxLength={70}/>
               <div className='button' onClick={addAttr}>+</div>
             </div>
             <div className="attr-container">

@@ -112,7 +112,7 @@ export default function EditCompany() {
 
         <div className="form-field">
           <label htmlFor="add-value">Add Value:</label>
-          <input type="text" name="add-value" id="add-value" />
+          <input type="text" name="add-value" id="add-value"  maxLength={70}/>
           <div onClick={addAttr} className='button' >+</div>
         </div>
         <div className="attr-container">

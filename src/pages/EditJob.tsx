@@ -115,7 +115,7 @@ export default function CreateJob() {
 
           <div className="form-field">
             <label htmlFor="add-skill">Add Skill:</label>
-            <input type="text" name="add-skill" id="add-skill" />
+            <input type="text" name="add-skill" id="add-skill"  maxLength={70}/>
             <button onClick={addAttr}>+</button>
           </div>
 
