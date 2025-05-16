@@ -122,6 +122,10 @@
   border: 5px inset black;
 }
 
+.list-label {
+  margin: 20px 0 10px 0;
+}
+
 input {
   width: 50%;
   border: 5px inset black;
@@ -176,7 +180,7 @@ form, .info {
 }
 
 a {
-  color: white;
+  color: wheat;
 }
 
 a:hover {

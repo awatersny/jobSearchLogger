@@ -21,7 +21,7 @@ export default function Company({ showDetails, id }) {
       </div>
       {showDetails ? <>
       <div className="info-field"><b>Description: </b>{company.description}</div>
-      <div ><u><b>Values</b></u></div>
+      <div  className="list-label"><u><b>Values</b></u></div>
       <div className="attr-container">
       {company.values ? company.values.length ? company.values.map(value => 
         <div className="attr">
@@ -29,7 +29,10 @@ export default function Company({ showDetails, id }) {
         </div>)
       : <div>None Recorded</div> : <div>Loading...</div>}
       </div>
-      <div className="website-field"><b><u>Website</u></b>
+      <div className="website-field">
+        <div className="list-label">
+          <b><u>Website</u></b>
+        </div>
         <a href={company.website} target="_blank">{company.website}</a>
       </div>
       <div className="menu">
