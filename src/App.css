@@ -105,9 +105,11 @@ body {
   text-align: center;
   border: 3px outset black;
   width: 25px;
+  font-family: sans-serif;
 }
 
 .delete:hover {
+  background-color: red;
   border: 3px inset white;
 }
 
