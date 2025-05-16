@@ -15,6 +15,7 @@ ___
 - React.js
 - Vite
 - Express.js
+- Node.js
 - Mongoose
 - MongoDB
 
