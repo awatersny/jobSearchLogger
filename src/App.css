@@ -122,10 +122,12 @@
 
 input {
   width: 50%;
+  border: 5px inset black;
 }
 
 textarea {
   width: 67%;
+  border: 5px ridge black;
 }
 
 label {
