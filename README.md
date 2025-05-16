@@ -25,6 +25,7 @@ You can find the a API repository [here](https://github.com/awatersny/jobSearchL
 ![](src/assets/4.png)
 
 ---
-## Icebox features (to-d0)
+
+## Icebox features (to-do)
 - User authentication
 - Save cover letter drafts
