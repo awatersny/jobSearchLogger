@@ -1,4 +1,4 @@
-import { getCompany } from "../services/jobSearchLoggerAPI"
+import { deleteCompany, getCompany } from "../services/jobSearchLoggerAPI"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -8,6 +8,8 @@ export default function Company({ showDetails, id }) {
   useEffect(() => {
     getCompany(id).then(res => setCompany(res.data))
   }, [id])
+
+  
 
   return (
     <div className={showDetails ? "info" : "form-field"}>

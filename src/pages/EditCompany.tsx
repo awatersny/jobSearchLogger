@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { editCompany, getAllCompanies, getCompany } from "../services/jobSearchLoggerAPI"
+import { deleteCompany, editCompany, getAllCompanies, getCompany } from "../services/jobSearchLoggerAPI"
 import { useNavigate, useParams } from "react-router-dom"
 
 export default function EditCompany() {
@@ -55,6 +55,13 @@ export default function EditCompany() {
     const currDex = values.indexOf(currValue)
     currValues.splice(currDex, 1)
     setValues(currValues)
+  }
+
+  const deleteThisCompany = evt => {
+    evt.preventDefault()
+    deleteCompany(id).then(res => {
+      nav(-1)
+    })
   }
 
   const saveChanges = evt => {
@@ -127,7 +134,10 @@ export default function EditCompany() {
             defaultValue={company.website}
           />
         </div>
-        <button>Update</button>
+        <div className="menu">
+          <button>Update</button>
+          <button onClick={deleteThisCompany} className="delete">X</button>
+        </div>
       </form>
     </main>
     </>
