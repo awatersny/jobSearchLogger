@@ -91,7 +91,7 @@ body {
   padding: 5px;
   background-color: #333;
   color: white;
-  border: 5px outset black;
+  border: 5px outset white;
   cursor: pointer;
   min-width: 20px;
   text-align: center;
@@ -108,7 +108,7 @@ body {
 }
 
 .delete:hover {
-  border: 3px inset black;
+  border: 3px inset white;
 }
 
 .button:hover, button:hover{
